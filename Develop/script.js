@@ -10,8 +10,19 @@ function getApi() {
 
         .then(function (data) {
             for (var i = 0; i <= 32; i += 8) {
+
+
+
+
+                var array = data.list[1].dt_txt.split(" ")
+
+                var dateFormatted = array[0]
+
+
+
+
                 var weatherIcon = data.list[1].weather[0].icon
-                var name = city + " " + "(" + data.list[1].dt_txt + ")";
+                var name = city + " " + "(" + dateFormatted + ")";
                 var humidity = data.list[1].main.humidity
                 var windSpeed = Math.round(data.list[1].wind.speed * 100) / 100
                 // populate 5-day forcast div by looping
