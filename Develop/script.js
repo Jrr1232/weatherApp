@@ -51,16 +51,19 @@ function getApi() {
 
                     var date = new Date(data.list[y].dt_txt)
                     var dateFormatted = date.toString()
-                    var array = dateFormatted.split("18")
-                    console.log(array)
-                    var day = array[0]
+                    var delimiter = ' '
+
+                    var tokens = dateFormatted.split(delimiter).slice(0, 4)
+                    result2 = tokens.join(delimiter);
+                    console.log(result2)
+                    
 
 
                     var weatherIcon = data.list[y].weather[0].icon
                     document.getElementById(card).children[1].innerHTML = `<img src="Develop/icons/${weatherIcon}.png">`
 
                     Math.round(data.list[0].wind.speed * 100) / 100
-                    document.getElementById(card).children[0].innerHTML = "<h2><b>" + day + "</b></h2>"
+                    document.getElementById(card).children[0].innerHTML = "<h2><b>" + result2 + "</b></h2>"
                     document.getElementById(card).children[2].innerHTML = "<h4><b>" + "Temp:" + " " + Math.round(((data.list[y].main.temp - 273.15) * 9 / 5 + 32) * 100) / 100 + " " + "F°" + "</b ></h4 > "
                     document.getElementById(card).children[3].innerHTML = "<h4><b>" + "Humidity: " + data.list[y].main.humidity + "%" + "</b ></h4 > "
                     document.getElementById(card).children[4].innerHTML = "<h4><b>" + "Wind:" + " " + Math.round(data.list[y].wind.speed * 100) / 100 + " " + "MPH" + "</b></h4>"
@@ -105,6 +108,8 @@ buttons.forEach(button => {
     button.addEventListener('click', function setApi() {
         city = this.innerText;
 
+        document.getElementById("forecast-header").innerHTML = "<h2>5-Day Forecast: </h2>"
+
 
 
         getApi()
@@ -114,7 +119,7 @@ buttons.forEach(button => {
 })
 var searchButton = document.getElementById("search")
 searchButton.addEventListener('click', () => {
-
+    document.getElementById("forecast-header").innerHTML = "<h2>5-Day Forecast: </h2>"
     var inputCity = document.getElementById("form").value;
     city = inputCity
     getApi();
