@@ -1,7 +1,7 @@
 # challenge-week-6
 
 ## Weather App
-This app will display weather outlook for multiple cities, saving each city to a button that will be saved and displayed when visiting the page again.
+This app will display weather outlook for multiple cities, saving each city to a button that will displayed when visiting the page again.
 
 ## Acceptance Criteria
 When searching a city, current, and also a 5-day outlook will be displayed. <br/>
