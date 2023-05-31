@@ -3,6 +3,19 @@ var pastCities = []
 
 // function for local storage 
 // capture value from form and save to local storage
+
+function arrayUnique(array) {
+    var a = array.concat();
+    for (var i = 0; i < a.length; ++i) {
+        for (var j = i + 1; j < a.length; ++j) {
+            if (a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+}
+
 function cityHistory() {
     var pastCity = document.getElementById("form").value
 
@@ -17,49 +30,52 @@ function cityHistory() {
         localStorage.setItem("key", string);
     }
 
+    var array3 = arrayUnique(pastCities.concat(pastCity))
+    console.log(array3)
 
 
 
     newArray = [...new Set(retArray)]
     console.log(newArray)
+
     var button1 = document.getElementById("button1");
     if (button1.innerText === "") {
-        button1.innerText = retArray.length >= 1 ? retArray[0] : "";
+        button1.innerText = array3.length >= 1 ? array3[0] : "";
     }
 
     var button2 = document.getElementById("button2");
     if (button2.innerText === "") {
-        button2.innerText = retArray.length >= 2 ? retArray[1] : "";
+        button2.innerText = array3.length >= 2 ? array3[1] : "";
     }
 
     var button3 = document.getElementById("button3");
     if (button3.innerText === "") {
-        button3.innerText = retArray.length >= 3 ? retArray[2] : "";
+        button3.innerText = array3.length >= 3 ? array3[2] : "";
     }
 
     var button4 = document.getElementById("button4");
     if (button4.innerText === "") {
-        button4.innerText = retArray.length >= 4 ? retArray[3] : "";
+        button4.innerText = array3.length >= 4 ? array3[3] : "";
     }
 
     var button5 = document.getElementById("button5");
     if (button5.innerText === "") {
-        button5.innerText = retArray.length >= 5 ? retArray[4] : "";
+        button5.innerText = array3.length >= 5 ? array3[4] : "";
     }
 
     var button6 = document.getElementById("button6");
     if (button6.innerText === "") {
-        button6.innerText = retArray.length >= 6 ? retArray[5] : "";
+        button6.innerText = array3.length >= 6 ? array3[5] : "";
     }
 
     var button7 = document.getElementById("button7");
     if (button7.innerText === "") {
-        button7.innerText = retArray.length >= 7 ? retArray[6] : "";
+        button7.innerText = array3.length >= 7 ? array3[6] : "";
     }
 
     var button8 = document.getElementById("button8");
     if (button8.innerText === "") {
-        button8.innerText = retArray.length >= 8 ? retArray[7] : "";
+        button8.innerText = array3.length >= 8 ? array3[7] : "";
     }
 }
 
