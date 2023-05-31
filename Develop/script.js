@@ -1,5 +1,87 @@
 var city;
+var pastCities = []
 
+// function for local storage 
+// capture value from form and save to local storage
+function cityHistory() {
+    var pastCity = document.getElementById("form").value
+
+
+
+    var retString = localStorage.getItem("key");
+    var retArray = retString ? JSON.parse(retString) : [];
+
+    if (pastCity !== "") {
+        pastCities.push(pastCity);
+        var string = JSON.stringify(pastCities.concat(retArray)); // Combine new city with existing data
+        localStorage.setItem("key", string);
+    }
+
+
+
+
+    newArray = [...new Set(retArray)]
+    console.log(newArray)
+    var button1 = document.getElementById("button1");
+    if (button1.innerText === "") {
+        button1.innerText = retArray.length >= 1 ? retArray[0] : "";
+    }
+
+    var button2 = document.getElementById("button2");
+    if (button2.innerText === "") {
+        button2.innerText = retArray.length >= 2 ? retArray[1] : "";
+    }
+
+    var button3 = document.getElementById("button3");
+    if (button3.innerText === "") {
+        button3.innerText = retArray.length >= 3 ? retArray[2] : "";
+    }
+
+    var button4 = document.getElementById("button4");
+    if (button4.innerText === "") {
+        button4.innerText = retArray.length >= 4 ? retArray[3] : "";
+    }
+
+    var button5 = document.getElementById("button5");
+    if (button5.innerText === "") {
+        button5.innerText = retArray.length >= 5 ? retArray[4] : "";
+    }
+
+    var button6 = document.getElementById("button6");
+    if (button6.innerText === "") {
+        button6.innerText = retArray.length >= 6 ? retArray[5] : "";
+    }
+
+    var button7 = document.getElementById("button7");
+    if (button7.innerText === "") {
+        button7.innerText = retArray.length >= 7 ? retArray[6] : "";
+    }
+
+    var button8 = document.getElementById("button8");
+    if (button8.innerText === "") {
+        button8.innerText = retArray.length >= 8 ? retArray[7] : "";
+    }
+}
+
+
+
+
+function display() {
+    var retString = localStorage.getItem("key")
+    var retArray = JSON.parse(retString)
+    newArray = [...new Set(retArray)]
+    document.getElementById("button1").innerText = newArray.length >= 1 ? newArray[0] : "";
+    document.getElementById("button2").innerText = newArray.length >= 2 ? newArray[1] : "";
+    document.getElementById("button3").innerText = newArray.length >= 3 ? newArray[2] : "";
+    document.getElementById("button4").innerText = newArray.length >= 4 ? newArray[3] : "";
+    document.getElementById("button5").innerText = newArray.length >= 5 ? newArray[4] : "";
+    document.getElementById("button6").innerText = newArray.length >= 6 ? newArray[5] : "";
+    document.getElementById("button7").innerText = newArray.length >= 7 ? newArray[6] : "";
+    document.getElementById("button8").innerText = newArray.length >= 8 ? newArray[7] : "";
+
+}
+// retrieve it from local storage
+// set the innertext of citybutton to local storage 
 
 function getApi() {
 
@@ -55,8 +137,8 @@ function getApi() {
 
                     var tokens = dateFormatted.split(delimiter).slice(0, 4)
                     result2 = tokens.join(delimiter);
-                    console.log(result2)
-                    
+                    // console.log(result2)
+
 
 
                     var weatherIcon = data.list[y].weather[0].icon
@@ -114,6 +196,7 @@ buttons.forEach(button => {
 
         getApi()
 
+
     }
     )
 })
@@ -123,8 +206,11 @@ searchButton.addEventListener('click', () => {
     var inputCity = document.getElementById("form").value;
     city = inputCity
     getApi();
+    cityHistory()
+
 
 }
 
 )
+display()
 
