@@ -5,6 +5,7 @@
 
 
 # Weather App
+![image](https://github.com/Jrr1232/weatherApp/assets/71472570/eafeb81f-1358-4dec-a813-a74074df7c86)
 
 
 ## 🤔 Introduction
